@@ -10,8 +10,10 @@
   %p.bg-info.flash No questions.
 
 %p
-  = link_to 'New question', new_poll_question_path(@poll)
-  |
-  = link_to 'Edit', edit_poll_path(@poll)
+  =link_to 'New question', new_poll_question_path(@poll)
   \|
-  = link_to 'Back', polls_path
+  =link_to 'Edit', edit_poll_path(@poll)
+  \|
+  =link_to 'Back', polls_path
+  \|
+  =link_to 'Answer', new_poll_reply_path(@poll)
