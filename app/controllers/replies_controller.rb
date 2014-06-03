@@ -9,7 +9,7 @@ class RepliesController < ApplicationController
   end
 
   def create
-    @reply = Reply.new reply_params
+    @reply = @poll.replies.build reply_params
 
     respond_to do |format|
       if @reply.save

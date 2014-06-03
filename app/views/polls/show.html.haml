@@ -6,6 +6,16 @@
       %li
         =question.title
         =link_to "Drop question", poll_question_path(@poll, question), method: :delete
+
+  %ul
+    -@poll.replies.each do |reply|
+      %li
+        =time_ago_in_words reply.created_at
+        %dl.dl-horizontal
+          -reply.answers.each do |answer|
+            %dt=answer.question.title
+            %dd=answer.value
+
 -else
   %p.bg-info.flash No questions.
 
