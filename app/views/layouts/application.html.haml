@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title Tutspolls
+    =stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    =javascript_include_tag 'application', 'data-turbolinks-track' => true
+    =javascript_include_tag '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'
+    =csrf_meta_tags
+  %body
+    =render 'nav'
+    .container
+      =content_tag :div, flash[:notice], class: "flash bg-success" if flash[:notice]
+      =content_tag :div, flash[:error], class: "flash bg-danger" if flash[:error]
+
+      =yield
