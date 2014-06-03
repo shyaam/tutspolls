@@ -6,8 +6,9 @@
         - @poll.errors.full_messages.each do |msg|
           %li= msg
 
-  %p.form-group
+  %p
     = f.label :title
     = f.text_field :title, class: "form-control input-lg"
-  %p.form-group
+  %p
+
     = f.submit 'Save', class: "btn btn-primary"
