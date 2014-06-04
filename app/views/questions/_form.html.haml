@@ -19,5 +19,12 @@
         =option[0]
 
   %p
+    %label Specify some choices:
+
+  =f.fields_for :possible_answers do |c|
+    %p
+      =c.text_field :title, placeholder: "Type your choice", class: "form-control"
+
+  %p
     =f.hidden_field :poll_id
     =f.submit 'Save'
