@@ -3,12 +3,15 @@
 - unless @polls.any?
   %p.bg-info.flash No polls.
 
-%ul
+%ul.clearfix.polls
   - @polls.each do |poll|
-    %li
-      %p
-        =link_to poll.title, poll
-        |
-        =link_to 'Edit', edit_poll_path(poll)
+    %li.col-md-6.polls-poll
+      .polls-poll-detail
+        %h2
+          =link_to poll.title, new_poll_reply_path(poll)
+          =link_to "Manage", poll, class: "label label-default"
 
-%p= link_to 'New Poll', new_poll_path, class: "btn btn-default"
+  %li.col-md-6.polls-poll
+    .polls-poll-detail
+      %h2
+        = link_to '+', new_poll_path
