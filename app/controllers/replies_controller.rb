@@ -27,6 +27,6 @@ class RepliesController < ApplicationController
   end
 
   def reply_params
-    params.require(:reply).permit({ answers_attributes: [ :value, :question_id ] })
+    params.require(:reply).permit({ answers_attributes: [ :value, :question_id, :possible_answer_id ] })
   end
 end

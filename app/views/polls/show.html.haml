@@ -22,8 +22,8 @@
       %dl.dl-horizontal
         -reply.answers.each do |answer|
           %dt=answer.question.title
-          %dd=answer.value
-
+          %dd
+            =answer.value.present? ? answer.value : answer.possible_answer.title
 
 %p
   =link_to 'New question', new_poll_question_path(@poll)

@@ -2,9 +2,6 @@
 
 =form_for [ @poll, @reply ] do |f|
   =f.fields_for :answers do |c|
-    %p
-      =c.label :value, c.object.question.title
-      =c.text_field :value, class: "form-control"
-      =c.hidden_field :question_id
+    =render c.object.question.kind, c: c
 
   =f.submit "Finish poll", class: "btn btn-primary"

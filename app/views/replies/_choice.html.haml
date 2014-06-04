@@ -1,0 +1,8 @@
+%label=c.object.question.title
+.radio
+  -c.object.question.possible_answers.each do |possible_answer|
+    %p
+      %label
+        =possible_answer.title
+        =c.radio_button :possible_answer_id, possible_answer.id
+        =c.hidden_field :question_id
