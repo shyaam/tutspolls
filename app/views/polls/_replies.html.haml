@@ -1,0 +1,11 @@
+-@poll.replies.each do |reply|
+  .col-md-6
+    .panel.panel-default
+      .panel-heading.text-right
+        =time_ago_in_words reply.created_at
+      .panel-body
+        %dl
+          -reply.answers.each do |answer|
+            %dt=answer.question.title
+            %dd
+              =answer.value.present? ? answer.value : answer.possible_answer.title

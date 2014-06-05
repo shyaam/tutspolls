@@ -1,45 +1,16 @@
 %h1=@poll.title
 
 %ul.nav.nav-tabs
-  %li.active
-    =link_to "Questions", "#tab-questions", data: { toggle: "tab" }
-  %li
-    =link_to "Replies", "#tab-replies", data: { toggle: "tab" }
-  %li
-    =link_to "Stats", "#tab-stats", data: { toggle: "tab" }
+  %li.active=link_to "Questions", "#tab-questions", data: { toggle: "tab" }
+  %li=       link_to "Replies"  , "#tab-replies"  , data: { toggle: "tab" }
+  %li=       link_to "Stats"    , "#tab-stats"    , data: { toggle: "tab" }
 
 .tab-content
   #tab-questions.tab-pane.active
-    -if @poll.questions.any?
-      %ul
-        -@poll.questions.each do |question|
-          %li
-            =question.title
-            =link_to "Drop question", poll_question_path(@poll, question), method: :delete
-            %ul
-              -question.possible_answers.each do |possible_answer|
-                %li=possible_answer.title
-
-    -else
-      %p.bg-info.flash No questions.
-
-    %p.btn-group
-      =link_to 'Add question', new_poll_question_path(@poll), class: "btn btn-default"
-      =link_to 'Edit', edit_poll_path(@poll), class: "btn btn-default"
-      =link_to 'Answer', new_poll_reply_path(@poll), class: "btn btn-default"
+    =render "questions"
 
   #tab-replies.tab-pane
-    -@poll.replies.each do |reply|
-      .col-md-6
-        .panel.panel-default
-          .panel-heading.text-right
-            =time_ago_in_words reply.created_at
-          .panel-body
-            %dl
-              -reply.answers.each do |answer|
-                %dt=answer.question.title
-                %dd
-                  =answer.value.present? ? answer.value : answer.possible_answer.title
+    =render "replies"
 
   #tab-stats.tab-pane
-    hello
+    =render "stats"

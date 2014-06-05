@@ -1,0 +1,17 @@
+-if @poll.questions.any?
+  %ul
+    -@poll.questions.each do |question|
+      %li
+        =question.title
+        =link_to "Drop question", poll_question_path(@poll, question), method: :delete
+        %ul
+          -question.possible_answers.each do |possible_answer|
+            %li=possible_answer.title
+
+-else
+  %p.bg-info.flash No questions.
+
+%p.btn-group
+  =link_to 'Add question', new_poll_question_path(@poll), class: "btn btn-default"
+  =link_to 'Edit', edit_poll_path(@poll), class: "btn btn-default"
+  =link_to 'Answer', new_poll_reply_path(@poll), class: "btn btn-default"
