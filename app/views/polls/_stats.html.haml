@@ -1,0 +1,10 @@
+#polls_per_month
+  :javascript
+    (function($) {
+      $(function() {
+        var selector = "#polls_per_month";
+        var data = #{@poll.serialize_for_graph};
+
+        Graph.bar(selector,data);
+      });
+    })(jQuery);

@@ -4,3 +4,7 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+# Rake::TestTask.new "test:lib" do |t|
+#   t.pattern = "test/lib/**/*_test.rb"
+# end

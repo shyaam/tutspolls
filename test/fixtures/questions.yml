@@ -3,9 +3,9 @@
 one:
   poll_id: 
   title: MyString
-  type: 
+  kind: 
 
 two:
   poll_id: 
   title: MyString
-  type: 
+  kind: 
