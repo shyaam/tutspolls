@@ -3,7 +3,7 @@
   %head
     %title Tutspolls
     =stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    =javascript_include_tag 'http://d3js.org/d3.v3.min.js'
+    =javascript_include_tag 'http://google.com/jsapi'
     =javascript_include_tag 'application', 'data-turbolinks-track' => true
     =javascript_include_tag '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'
     =csrf_meta_tags
@@ -14,3 +14,5 @@
       =content_tag :div, flash[:error], class: "flash bg-danger" if flash[:error]
 
       =yield
+
+    =yield :footer

@@ -8,3 +8,11 @@
         Graph.bar(selector,data);
       });
     })(jQuery);
+
+-content_for :footer do
+  :javascript
+    google.setOnLoadCallback(function() {
+      Graph.instances.forEach(function(instance) {
+        instance.render();
+      });
+    });

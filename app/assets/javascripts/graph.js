@@ -1,68 +1,34 @@
 var Graph = function(selector, data) {
   this.selector = selector;
   this.data = data;
-
-  this.svg = d3.select(selector).append("svg").attr({
-    width: "100%",
-    height: Graph.height,
-    class: "graph"
-  });
 };
 
-Graph.prototype.render = function(graphType) {
-  this[graphType]();
-};
-
-Graph.prototype.setAxis = function() {
-  this.yScale = d3.scale.linear()
-    .domain(this.data.y_axis.scale)
-    .range([0, Graph.height - Graph.margins.top - Graph.margins.bottom ]);
-
-  this.yAxis = d3.svg.axis()
-    .scale(this.yScale)
-    .tickFormat(d3.format("d"))
-    .orient("left");
-};
-
-Graph.prototype.renderAxis = function() {
-  this.svg.append("g").attr({
-    class: "y_axis",
-    transform: "translate(" + [Graph.margins.left, Graph.margins.top] + ")"
-  }).call(this.yAxis)
-};
-
-Graph.prototype.bar = function() {
+Graph.prototype.getData = function() {
   var _this = this;
+  var dataWithCaptions = this.data.data.map(function(element, index, array) {
+    return [ _this.data.x_axis.series[index], element ];
+  });
 
-  this.setAxis();
-  this.renderAxis();
+  return google.visualization.arrayToDataTable([
+    [ this.data.x_axis.legend, this.data.y_axis.legend ],
+  ].concat(dataWithCaptions));
+};
 
-  this.svg.selectAll("rect")
-    .data(this.data.data)
-    .enter()
-    .append("rect")
-    .attr({
-      x: function(d, i) { return i * 34 + Graph.margins.left; },
-      y: function(d, i) { return Graph.margins.top; },
-      width: function(d, i) { return d3.select(_this.selector).property("clientWidth") / 3; },
-      height: _this.yScale,
-      class: "graph-bar",
-    });
-}
+Graph.prototype.render = function() {
+  var div = $("<div/>");
+  var chart = new google.visualization.ColumnChart($(this.selector)[0]);
+  var options = {
+    width: 960,
+    min: 0
+  };
+
+  chart.draw(this.getData(), options);
+};
+
+Graph.instances = [];
 
 Graph.bar = function(selector, data) {
-  var graph = new Graph(selector, data);
-  if (!Graph.instances) { Graph.instances = []; };
-
-  Graph.instances.push(graph);
-  graph.render('bar')
-}
-
-Graph.margins = {
-  top: 30,
-  bottom: 30,
-  left: 30,
-  right: 30
+  Graph.instances.push(new Graph(selector, data));
 };
 
-Graph.height = 200;
+google.load('visualization', '1.0', {'packages':['corechart']});
