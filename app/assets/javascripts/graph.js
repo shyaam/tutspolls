@@ -15,11 +15,15 @@ Graph.prototype.getData = function() {
 };
 
 Graph.prototype.render = function() {
-  var div = $("<div/>");
+  var divWidth = $(this.selector).parents(".container:first").prop("clientWidth");
   var chart = new google.visualization.ColumnChart($(this.selector)[0]);
   var options = {
-    width: 960,
-    min: 0
+    width: divWidth,
+    min: 0,
+    legend: { position: "none" },
+    height: 300,
+    fontName: "sans-serif",
+    fontSize: "12"
   };
 
   chart.draw(this.getData(), options);
