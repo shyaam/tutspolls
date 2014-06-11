@@ -32,20 +32,43 @@ class PollSerializer
     #  }
     def count_per_month poll
       polls_per_month = poll.replies.group_by { |reply|
-        reply.created_at.beginning_of_day }
+        reply.created_at.beginning_of_month }
 
       data = polls_per_month.map { |k,v| v.size }
 
       {
         data: data,
+        title: "Polls answered by month",
         x_axis: {
           legend: "Polls per month",
-          series: polls_per_month.keys.map { |date| date.strftime("%d %b %Y") }
+          series: polls_per_month.keys.map { |date| date.strftime("%b %Y") }
         },
         y_axis: {
           legend: "No. polls",
           scale: [0, data.max + 1]
         }
+      }
+    end
+
+    ##
+    # @param question {Question}
+    def answers_per_question question
+      answers_per_question = question.answers.group_by(&:possible_answer)
+      data = answers_per_question.map { |possible_answer, answers| answers.length }
+
+      {
+        data: data,
+        title: %(#{question.title}),
+        y_axis: {
+          legend: "No. of answers",
+          scale: [ 0, data.max + 1 ]
+        },
+        x_axis: {
+          legend: "Answers per question",
+          series: answers_per_question.map do |possible_answer, answers|
+            possible_answer.title
+          end
+        },
       }
     end
   end

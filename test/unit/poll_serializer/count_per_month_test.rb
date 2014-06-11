@@ -27,7 +27,7 @@ class PollSerializerTest < MiniTest::Test
   end
 
   def test_polls_per_month_have_x_axis_series_in_proper_format
-    assert_includes @stats.fetch(:x_axis).fetch(:series).first, Time.now.strftime("%m %Y")
+    assert_includes @stats.fetch(:x_axis).fetch(:series).first, Time.now.strftime("%b %Y")
   end
 
   def test_polls_per_month_have_y_axis

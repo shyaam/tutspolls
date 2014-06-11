@@ -5,9 +5,23 @@
         var selector = "#polls_per_month";
         var data = #{@poll.serialize_for_graph};
 
-        Graph.bar(selector,data);
+        Graph.column(selector,data);
       });
     })(jQuery);
+
+#answers_per_question
+  -@poll.questions.each do |question|
+    -if question.kind == "choice"
+      .answer-per-question{id: "answers-per-question-#{question.id}"}
+        :javascript
+          (function($) {
+            $(function() {
+              var selector = "#answers-per-question-#{question.id}";
+              var data = #{question.serialize_for_graph};
+
+              Graph.pie(selector,data);
+            });
+          })(jQuery);
 
 -content_for :footer do
   :javascript
