@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'haml-rails'
 gem 'pry-rails'
 gem 'yard'
+gem 'devise'
 
 gem 'bootstrap-sass'
 gem 'jquery-rails'

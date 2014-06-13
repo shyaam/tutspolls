@@ -1,9 +1,19 @@
 %h1=@poll.title
 
 %ul.nav.nav-tabs
-  %li.active=link_to "Questions", "#tab-questions", data: { toggle: "tab" }
-  %li=       link_to "Replies"  , "#tab-replies"  , data: { toggle: "tab" }
-  %li=       link_to "Stats"    , "#tab-stats"    , data: { toggle: "tab" }
+  %li.active
+    =link_to "#tab-questions", data: { toggle: "tab" } do
+      %span.glyphicon.glyphicon-th-list
+      Questions
+  %li
+    =link_to "#tab-replies", data: { toggle: "tab" } do
+      %span.glyphicon.glyphicon-list-alt
+      Replies
+
+  %li
+    =link_to "#tab-stats", data: { toggle: "tab" } do
+      %span.glyphicon.glyphicon-stats
+      Stats
 
 .tab-content
   #tab-questions.tab-pane.active
