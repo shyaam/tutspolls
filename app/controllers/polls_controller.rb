@@ -1,5 +1,6 @@
 class PollsController < ApplicationController
   before_action :set_poll, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate!, except: [ :index ]
 
   # GET /polls
   # GET /polls.json
@@ -70,5 +71,13 @@ class PollsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def poll_params
       params.require(:poll).permit(:title)
+    end
+
+    def authenticate!
+      authenticate_user!
+
+      unless current_user.admin?
+        redirect_to root_path, alert: "You don't have enough privileges to run that operation."
+      end
     end
 end

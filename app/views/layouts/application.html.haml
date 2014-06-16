@@ -11,7 +11,7 @@
     =render 'nav'
     .container
       =content_tag :div, flash[:notice], class: "flash bg-success" if flash[:notice]
-      =content_tag :div, flash[:error], class: "flash bg-danger" if flash[:error]
+      =content_tag :div, flash[:alert], class: "flash bg-danger" if flash[:alert]
 
       =yield
 
