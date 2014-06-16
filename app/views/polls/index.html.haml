@@ -9,9 +9,10 @@
       .polls-poll-detail
         %h2
           =link_to poll.title, new_poll_reply_path(poll)
-          =link_to "Manage", poll, class: "label label-default"
+          =link_to "Manage", poll, class: "label label-default" if current_user && current_user.admin?
 
-  %li.col-md-6.polls-poll
-    .polls-poll-detail
-      %h2
-        = link_to '+', new_poll_path
+  -if current_user && current_user.admin?
+    %li.col-md-6.polls-poll
+      .polls-poll-detail
+        %h2
+          = link_to '+', new_poll_path
