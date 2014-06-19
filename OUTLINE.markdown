@@ -7,16 +7,26 @@
 * [Ruby Fundamentals Course](https://courses.tutsplus.com/courses/the-fundamentals-of-ruby)
 * [Riding Ruby on Rails Course](https://courses.tutsplus.com/courses/riding-ruby-on-rails)
 
-* Bootstrapping the Project
-* Polls
-* Questions and Possible Answers
-* Replies and Answers
-* Improving the Application
-* Serializing Data for the Charts
-* Introducing Google Charts
-* First Chart: How many polls taken over time?
-* Second Chart: What kind of answers for a particular question?
-* Conclusion
+## 02. Bootstrapping the Project
+
+**Show notes**
+
+* [Haml documentation](https://haml.info)
+
+## 03. Defining the Business Model
+## 04. Polls
+## 05. Questions
+## 06. Possible Answers
+## 07. Replies and Answers
+## 08. Display Reply Data
+## 09. Serializing Data for the Charts - Part 1
+## 10. Introducing Google Charts
+## 11. First Chart: How many polls taken over time?
+## 12. Serializing Data for the Charts - Part 2
+## 13. Second Chart: What kind of answers for a particular question?
+## 14. Administration
+## 15. Authorization
+## 16. Conclusion
 
 **Review notes**
 
