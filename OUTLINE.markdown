@@ -25,6 +25,11 @@
 ## 12. Serializing Data for the Charts - Part 2
 ## 13. Second Chart: What kind of answers for a particular question?
 ## 14. Administration
+
+**Show notes**
+
+* [Devise on GitHub](http://github.com/plataformatec/devise#readme)
+
 ## 15. Authorization
 ## 16. Conclusion
 
@@ -34,3 +39,4 @@
 * What kind of questions we want answered?
 * Could we turn this into an even more flexible statistics aggregator solution?
 * Javascript enhancement: add more possible answers
+* Data validation
